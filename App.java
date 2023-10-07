@@ -6,7 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-public  class App {
+public  class Connect {
     public static void main(String[] args) throws SQLException {
         try {
             // Create Connection with DataBase with th help of Driver:

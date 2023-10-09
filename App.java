@@ -19,7 +19,7 @@ public class App {
             String user = "root";
             String pass = "";
             Connection conn = DriverManager.getConnection(url, user, pass);
-            String creatDb = "Create database firstDB";
+            String creatDb = "Select * from my_base";
             PreparedStatement stmat = conn.prepareStatement(creatDb);
             ResultSet rs = stmat.executeQuery();
             while (rs.next()) {

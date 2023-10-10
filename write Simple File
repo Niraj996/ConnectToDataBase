@@ -1,0 +1,25 @@
+package I.Ooperation.Ooperation;
+
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
+
+public class output {
+    public static void main(String[] args) {
+        try {
+            String[] fruits ={"Apple", "Mango", "Banana"};
+            BufferedWriter writer = new BufferedWriter(new FileWriter("Output.txt"));
+            writer.write("Writing to a file");
+            writer.write("\nHere is the next line");
+            for(String fru: fruits){
+                writer.write("\n"+fru);
+            }
+            System.out.println("file has been Created");
+            writer.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+            System.out.println("Problem with file creation");
+        }
+    }
+    
+}

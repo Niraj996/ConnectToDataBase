@@ -1,0 +1,64 @@
+package com.example;
+import java.sql.*;
+
+public class App {
+    public static Statement stmat;
+    public static Connection conn;
+    public static ResultSet rs;
+
+    public static void main(String[] args)  {
+        connection();
+        insert();
+        fetchAll();
+    }
+     public static void connection() {
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            System.out.println("Driver Found");
+
+            String url = "jdbc:mysql://localhost:3306/mybase";
+            String user = "root";
+            String pass = "";
+            conn = DriverManager.getConnection(url, user, pass);
+
+        } catch (Exception e) {
+            e.getMessage();
+            System.out.println("Driver Not Found");
+        }
+
+    }
+     
+     public static void insert(){
+                   try {
+               String inssql ="INSERT INTO my_base (ID ,name, cont , Address ) VALUES (102 ,'Hari', '9716', 'kritipur Ktm')";
+             stmat =conn.createStatement();
+             stmat.executeUpdate(inssql);
+                
+                System.out.println("Data inserted: ");
+            } catch (Exception e) {
+                e.getMessage();
+                System.out.println("Insert Error: ");
+            }
+    }
+     
+    public static void fetchAll() {
+      String sql1 = "SELECT * FROM my_base";
+            // String sql ="INSERT INTO my_base (ID ,name, cont , Address ) VALUES (102 ,'hari', '9872', 'Kritipur Ktm')";
+            //PreparedStatement stmat = conn.prepareStatement(creatDb);
+             try {
+                stmat = conn.createStatement();
+                rs = stmat.executeQuery(sql1);
+            while (rs.next()) {
+                System.out.println("ID: " + rs.getInt("ID"));
+                System.out.println("name: " + rs.getString("name"));
+                System.out.println("Contact: " + rs.getString("cont"));
+                System.out.println("Address: " + rs.getString("Address"));
+            }
+          }  catch (SQLException e) {
+                e.getMessage();
+                System.out.println("Fetch Error: ");           
+            }
+    }  
+}        
+ 
+
